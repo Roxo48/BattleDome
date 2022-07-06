@@ -72,39 +72,44 @@ public class Manager {
 
         switch (state){
             case START:
+                //Bukkit.getServer().broadcastMessage(ChatColor.DARK_GREEN +"hi");
 
                 if(count == 0) {
-                    playerList.add((Player) Bukkit.getServer().getOnlinePlayers());
+                    playerList.addAll( Bukkit.getServer().getOnlinePlayers());
+                    obLoc = new Location(playerList.get(0).getWorld(), getX_1(),getY_1(),getZ_3());
+                    cryLoc = new Location(playerList.get(0).getWorld(), getX_2(),getY_2(),getZ_2());
                 }
-                obLoc = new Location(playerList.get(1).getWorld(), getX_1(),getY_1(),getZ_3());
-                cryLoc = new Location(playerList.get(1).getWorld(), getX_2(),getY_2(),getZ_2());
+
                 count++;
                 int a = playerList.size();
                 int b = (int) a/2;
                 int c = (int) b-1;
-                if(teamOne.size() != c || teamTwo.size() != c){setState(State.START);}
-                if(teamOne.size() == c && teamTwo.size() == c){
-                    gameStartingTask.runTaskTimer(this.getPlugin(), 0 ,20);
-                }
 
-                Location obBlockOne = new Location(playerList.get(1).getWorld(), getX_1(),getY_1(),getZ_3());
-                Location obBlockTwo = new Location(playerList.get(1).getWorld(), getX_2(),getY_2(),getZ_2());
 
-                obBlockOne.getBlock().setType(Material.CRYING_OBSIDIAN);
-                obBlockTwo.getBlock().setType(Material.CRYING_OBSIDIAN);
+                //if(teamOne.size() != c || teamTwo.size() != c){setState(State.START);}
+
+
+
+
+
 
                 break;
             case STARTING:
+
+                gameStartingTask.runTaskTimer(this.getPlugin(), 0 ,20);
+
+                break;
+            case ACTIVE:
+//                Location obBlockOne = new Location(playerList.get(1).getWorld(), getX_1(),getY_1(),getZ_3());
+//                Location obBlockTwo = new Location(playerList.get(1).getWorld(), getX_2(),getY_2(),getZ_2());
+
+                obLoc.getBlock().setType(Material.OBSIDIAN);
+                cryLoc.getBlock().setType(Material.CRYING_OBSIDIAN);
                 for(Player players : this.getPlayerList()){
                     players.setInvulnerable(false);
                 }
                 Bukkit.getServer().broadcastMessage(ChatColor.DARK_GREEN +"Team One you are protecting the regular obsidian");
                 Bukkit.getServer().broadcastMessage(ChatColor.DARK_BLUE + "Team Two you are protecting the crying obsidian");
-
-
-                break;
-            case ACTIVE:
-
 
                 break;
             case WON:

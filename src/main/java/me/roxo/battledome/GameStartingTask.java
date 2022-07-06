@@ -28,7 +28,7 @@ public class GameStartingTask extends BukkitRunnable {
                 players.setInvulnerable(true);
                 // players.sendTitle("", timer+ "", 20,20,20);
             }
-            gameManager.setState(State.STARTING);
+            gameManager.setState(State.ACTIVE);
             cancel();
         }
 

@@ -8,7 +8,7 @@ public class Command implements CommandExecutor {
 
         private Manager manager;
     public Command(Manager manager) {
-
+            this.manager = manager;
     }
 
     @Override
@@ -17,7 +17,7 @@ public class Command implements CommandExecutor {
             return false;
         }
 
-        if(args.length == 0){
+        if(args.length == 0 || manager == null){
             sender.sendMessage("You did not input the command right");
         }
         manager.setX_1(Double.parseDouble( args[0]));
@@ -25,8 +25,8 @@ public class Command implements CommandExecutor {
         manager.setZ_3(Double.parseDouble( args[2]));
 
         manager.setX_2(Double.parseDouble( args[3]));
-        manager.setX_2(Double.parseDouble( args[4]));
-        manager.setX_2(Double.parseDouble( args[5]));
+        manager.setY_2(Double.parseDouble( args[4]));
+        manager.setZ_2(Double.parseDouble( args[5]));
 
         manager.setState(State.START);
 

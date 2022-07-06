@@ -7,15 +7,15 @@ public final class Battledome extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        manager = new Manager(this);
+        this.manager = new Manager(this);
+        getCommand("startbattledome").setExecutor(new Command(getManager()));
+        getCommand("selectteam").setExecutor(new TeamSelector(getManager()));
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
 
-        getCommand("startgame").setExecutor(new Command(getManager()));
-        getCommand("selectteam").setExecutor(new TeamSelector(getManager()));
     }
 
     public Manager getManager() {

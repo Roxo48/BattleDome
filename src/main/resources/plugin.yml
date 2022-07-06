@@ -4,6 +4,6 @@ main: me.roxo.battledome.Battledome
 api-version: 1.18
 authors: [ Roxo ]
 commands:
-  startgame:
+  startbattledome:
   selectteam:
 

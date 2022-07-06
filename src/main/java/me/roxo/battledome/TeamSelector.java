@@ -24,14 +24,13 @@ public class TeamSelector implements CommandExecutor {
         List<Player> teamOne = manager.getTeamOne();
         List<Player> teamTwo = manager.getTeamTwo();
         int total = (int)manager.getPlayerList().size() /2;
-
+        if(manager.getState() != State.START){player.sendMessage(ChatColor.RED + "Not ready to select teams");return false;}
         if(args[0].toUpperCase().equals("TEAMONE")){
             if(manager.getTeamOne().size() >= total){
                 player.sendMessage(ChatColor.RED + "Team full");
             }
             if(teamOne.contains(player)){
                 player.sendMessage(ChatColor.LIGHT_PURPLE + "YOU ARE ALREADY IN THIS TEAM");
-                return true;
             }
             if(teamTwo.contains(player)){
                 teamTwo.remove(player);
@@ -59,6 +58,18 @@ public class TeamSelector implements CommandExecutor {
                 manager.getTeamTwo().add(player);
             }
 
+        }
+//        int count = 0;
+//        for(Player player1 : manager.getPlayerList()){
+//            if(teamOne.contains(player1)){
+//                count++;
+//            }else if(teamTwo.contains(player1)){
+//                count++;
+//            }
+//        }
+
+        if(teamOne.size() + teamTwo.size() == manager.getPlayerList().size()){
+            manager.setState(State.STARTING);
         }
 
 

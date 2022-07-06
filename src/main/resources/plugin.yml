@@ -1,0 +1,9 @@
+name: Battledome
+version: '${project.version}'
+main: me.roxo.battledome.Battledome
+api-version: 1.18
+authors: [ Roxo ]
+commands:
+  startgame:
+  selectteam:
+

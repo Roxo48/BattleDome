@@ -72,7 +72,6 @@ public class Manager {
 
         switch (state){
             case START:
-                //Bukkit.getServer().broadcastMessage(ChatColor.DARK_GREEN +"hi");
 
                 if(count == 0) {
                     playerList.addAll( Bukkit.getServer().getOnlinePlayers());
@@ -85,14 +84,6 @@ public class Manager {
                 int b = (int) a/2;
                 int c = (int) b-1;
 
-
-                //if(teamOne.size() != c || teamTwo.size() != c){setState(State.START);}
-
-
-
-
-
-
                 break;
             case STARTING:
 
@@ -100,8 +91,6 @@ public class Manager {
 
                 break;
             case ACTIVE:
-//                Location obBlockOne = new Location(playerList.get(1).getWorld(), getX_1(),getY_1(),getZ_3());
-//                Location obBlockTwo = new Location(playerList.get(1).getWorld(), getX_2(),getY_2(),getZ_2());
 
                 obLoc.getBlock().setType(Material.OBSIDIAN);
                 cryLoc.getBlock().setType(Material.CRYING_OBSIDIAN);
@@ -118,9 +107,7 @@ public class Manager {
                 break;
 
         }
-
     }
-
 
     public double getX_1() {
         return X_1;

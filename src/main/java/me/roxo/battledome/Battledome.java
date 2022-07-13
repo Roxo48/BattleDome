@@ -10,6 +10,7 @@ public final class Battledome extends JavaPlugin {
         this.manager = new Manager(this);
         getCommand("startbattledome").setExecutor(new Command(getManager()));
         getCommand("selectteam").setExecutor(new TeamSelector(getManager()));
+        getServer().getPluginManager().registerEvents(new Listener(), this);
     }
 
     @Override
